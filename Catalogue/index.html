@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Catalogue Maison Eurre</title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link href="css/canvas.min.css" rel="stylesheet" />
+
+    <link href="bower_components/angular-material/modules/js/core/core.css" rel="stylesheet" />
+    <link href="bower_components/angular-material/modules/js/backdrop/backdrop.css" rel="stylesheet" />
+    <link href="bower_components/angular-material/modules/js/dialog/dialog.css" rel="stylesheet" />
+    <link href="css/tile.min.css" rel="stylesheet" />
+    <link href="css/fontawesome.min.css" rel="stylesheet" />
+    <link href="css/dropbox.min.css" rel="stylesheet" />
+    <link href="css/dialog.min.css" rel="stylesheet" />
+    <link href="css/toolbar.min.css" rel="stylesheet" />
+    <link href="css/search.min.css" rel="stylesheet" />
+    <link href="css/tags.min.css" rel="stylesheet" />
+    <link href="bower_components/angular-material/modules/js/icon/icon.min.css" rel="stylesheet" />
+    <link href="css/main.min.css" rel="stylesheet" />
+    
+</head>
+
+
+
+<body ng-app="Catalogue" ng-controller="catalogueAdm" ng-init="init()" ng-keydown="keyDown($event)" ng-keyup="keyUp($event)">
+    <script type="text/ng-template" id="SearchTemplate.html">
+        <a>
+            <span bind-html-unsafe="match.model.Val | typeaheadHighlight:query"></span>
+        </a>
+    </script>
+    <div class="toolbar">
+        <button class="clear-button add-button" ng-click="add($event)">
+            <ng-md-icon icon="add_box" size="48"></ng-md-icon>
+        </button>
+        <input type="text"
+               id="search2"
+               ng-model='searchedText.Val'
+               ng-change='validateSearch($viewValue)'
+               typeahead="val as val.Val for val in searchSuggestions($viewValue)"
+               typeahead-loading="loadingSearchSuggestions"
+               typeahead-template-url="SearchTemplate.html"
+               typeahead-wait-ms="300"
+               typeahead-on-select="validateSearch($viewValue)"
+               class="search" />
+    </div>
+
+    <div id="Container" class="tileContainer drop-box u-fancy-scrollbar"
+         ng-file-drop ng-model="files"
+         drag-over-class="dragover" multiple="true"
+         allow-dir="false" accept="*"
+         ng-file-change="addByDragAndDrop($files, $event)">
+        <div class="mix tile {{item.filter}}" ng-repeat="item in items" ng-click="select(item, $event)">
+            <button class="delete-button" ng-click="delete(item, $event)">
+                <md-icon class="md-icon" md-svg-src="images/close.svg"></md-icon>
+            </button>
+
+            <ng-md-icon ng-hide="item.Image" class="image-placehoder" icon="image" size="88"></ng-md-icon>
+            <img ng-show="item.Image" ng-src="{{::apiRootUrl}}/static/{{item.Id}}/{{item.Image}}" class="tile-image"></img>
+        </div>
+    </div>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="js/jquery.mixitup.js"></script>
+
+    <!--web player-->
+    <script src="threejs/three.min.js"></script>
+    <script src="threejs/3d.js"></script>
+    <script src="threejs/OrbitControls.js"></script>
+    <script src="threejs/ColladaLoader.js"></script>
+    <script src="threejs/dat.gui.min.js"></script>
+    <!-- angular -->
+    <script src="bower_components/angular/angular.min.js"></script>
+
+    <!-- angular  adds -->
+    <script src="bower_components/angular-file-upload-master/dist/angular-file-upload-shim.js"></script>
+    <script src="bower_components/angular-file-upload-master/dist/angular-file-upload.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+    <!-- material -->
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="bower_components/angular-material/angular-material.min.js"></script>
+    <!--<script src="js/hammer.js"></script>
+    <script src="bower_components/angular-material/modules/js/core/core.min.js"></script>
+    <script src="bower_components/angular-material/modules/js/backdrop/backdrop.min.js"></script>
+    <script src="bower_components/angular-material/modules/js/dialog/dialog.min.js"></script>
+    <script src="bower_components/angular-material/modules/js/icon/icon.min.js"></script>-->
+    <script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+    <!-- app -->
+    <script src="js/tools.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/filters/filters.js"></script>
+    <script src="js/directives/tag.js"></script>
+    <script src="js/services/services.js"></script>
+    <script src="js/controllers/catalogueAdm.js"></script>
+    <script src="js/controllers/itemModalController.js"></script>
+
+</body>
+</html>

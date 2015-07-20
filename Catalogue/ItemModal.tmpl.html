@@ -1,0 +1,33 @@
+﻿<md-dialog msd-wheel="modalMouseWheel($event, $delta, $deltaX, $deltaY)" aria-label="{{::selectedItem.Nom}}">
+
+    <div class="modal-header">
+    </div>
+    <md-content ng-init="init()">
+        <div class="modal-wrapper">
+            <div class="modal-body">
+                <button class="clear-button" title="supprimer"
+                        ng-click="closeDialog()">
+                    <!--<md-icon class="delete-button" md-svg-src="images/close.svg" />-->
+                    <ng-md-icon class="delete-button" icon="close" size="28"></ng-md-icon>
+                </button>
+
+                <tag item="selectedItem" entityname="'Item'" fieldname="'Tags'"></tag>
+                <div ng-file-drop ng-model="files" class="drop-box drop-zone form-control textures-drop-box" drag-over-class="dragover" multiple="true"
+                     allow-dir="false" accept="*" ng-file-change="updateTextures($files, $event, 'Image')">
+                   
+                </div>
+
+                <div ng-file-drop ng-model="files" class="drop-box drop-zone clickable form-control modalContainerDrop" drag-over-class="dragover" multiple="false"
+                     allow-dir="false" accept="*" ng-file-change="updateAttachment($files, $event, 'Image')">
+                    <div id="modalContainer" class="modalContainer">
+                        <ng-md-icon ng-hide="selectedItem.Image" class="image-placehoder center-content" icon="image" size="88"></ng-md-icon>
+                        <img ng-show="selectedItem.Image" style="width:100%" ng-src="{{::parentScope.apiRootUrl}}/static/{{selectedItem.Id}}/HI_{{selectedItem.Image}}" />
+                    </div>
+                </div>
+
+               
+
+            </div>
+        </div>
+    </md-content>
+</md-dialog>

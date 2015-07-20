@@ -1,0 +1,60 @@
+﻿@import "ressources";
+.drop-box {
+    -o-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+.drop-box.dragover {
+  background: rgba(100, 255, 100, 0.5);
+}
+
+.placeholder{
+   position: relative;
+   width:100%;
+   height:100%;
+   min-height:100px;
+   min-width:100px;
+}
+
+.inner-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+    font-size: 64px;
+    font-size: 5rem;
+}
+.fa-2 {
+    font-size: 24px;
+    font-size: 3rem;
+}
+
+.drop-zone {
+  position: relative;
+  background:rgba(100, 255, 100, 0.1);
+  min-height: 50px;
+  height: auto;
+}
+.clickable {
+  cursor: pointer;
+}
+.drop-zone > p {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.textures-drop-box{
+    position:absolute;
+    top:5px;
+    right:5px;
+    height:35px;
+    width:35px;
+     min-height: 35px;
+}
