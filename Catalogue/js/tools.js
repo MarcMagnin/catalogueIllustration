@@ -27,6 +27,28 @@ function getFileExtension(filename) {
     return filename.split('.').pop();
 }
 
+// Fisher–Yates shuffle
+// http://bost.ocks.org/mike/shuffle/
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
+
+
 function delayLoop(collection, index, timer, action) {
     var i = 0;
     if (collection.length == 0)
@@ -146,8 +168,8 @@ function resizeImage(current_file, defer) {
             image.src = event.target.result;
 
             image.onload = function () {
-                var maxWidth = 300,
-                    maxHeight = 300,
+                var maxWidth = 200,
+                    maxHeight = 200,
                     imageWidth = image.width,
                     imageHeight = image.height;
 

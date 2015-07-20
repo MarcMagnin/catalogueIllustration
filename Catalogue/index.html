@@ -45,7 +45,7 @@
                class="search" />
     </div>
 
-    <div id="Container" class="tileContainer drop-box u-fancy-scrollbar"
+    <div id="Container" when-scrolled="loadMore()" class="tileContainer drop-box u-fancy-scrollbar"
          ng-file-drop ng-model="files"
          drag-over-class="dragover" multiple="true"
          allow-dir="false" accept="*"
@@ -92,6 +92,7 @@
     <script src="js/app.js"></script>
     <script src="js/filters/filters.js"></script>
     <script src="js/directives/tag.js"></script>
+    <script src="js/directives/infinitScroll.js"></script>
     <script src="js/services/services.js"></script>
     <script src="js/controllers/catalogueAdm.js"></script>
     <script src="js/controllers/itemModalController.js"></script>
