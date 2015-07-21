@@ -36,6 +36,7 @@ app.controller("catalogueAdm", function ($scope, $rootScope, $http, $timeout, $q
               $scope.prepareFilters(items)
               $scope.itemsPool = shuffle(items);
               $scope.loadMore();
+              filterCallback();
           })
     };
 
