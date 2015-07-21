@@ -8,22 +8,21 @@ app.directive('tag', function ($http, $rootScope, $timeout) {
             fieldname: '=',
         },
         template:
-            '<div class="tags-directive">' +
+            '<div>' +
              ' <label class="control-label">{{fieldname}}</label>' +
             '<div class="tags">' +
                 '<button class="tag-button repeat-item" ng-repeat="(idx, tag) in item[fieldname] track by $index" ng-click="remove(idx)">'+
         '{{tag}}' +
         '<md-icon class="md-icon tag-remove-icon" md-svg-src="images/close.svg"></md-icon>' +
-'</button>' +
-            '</div><form name="myForm" ng-submit="myForm.$valid && submit()">' +
-             '<p><input name="myInput" type="text" ' +
+'</button><form name="myForm" ng-submit="myForm.$valid && submit()"><input name="myInput" type="text" ' +
                 'ng-model="new_value"' +
                 'typeahead="tags.Val for tags in getData($viewValue) | filter:$viewValue" ' +
                 'typeahead-loading="loading" ' +
                 'typeahead-focus-first="false" ' +
                 'typeahead-editable="true" ' +
                 'typeahead-on-select="onSelect($item, $model, $label); asyncSelected = \'\'" ' +
-                'class="input"></input></form></p>' +
+                'class="input"></input></form>' +
+            '</div>' +
             '</div>',
         //'<i ng-show="loading" class="glyphicon glyphicon-refresh"></i> ' +
         //'<a class="btn" ng-click="add()">Ajouter</a>'

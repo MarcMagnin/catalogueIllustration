@@ -18,11 +18,13 @@ app.controller("catalogueAdm", function ($scope, $rootScope, $http, $timeout, $q
     $scope.itemsPool = [];
     $scope.items = [];
     $scope.tags = [];
+    $scope.shownItems = [];
     $scope.searchPattern = "*";
     $scope.searchedText = {};
     $scope.searchedText.Val = "";
     $scope.itemModalController = "";
     $scope.filtering = false;
+
     $scope.globalCounter = 0;
     $scope.init = function () {
         itemAdded = 0;
@@ -72,7 +74,7 @@ app.controller("catalogueAdm", function ($scope, $rootScope, $http, $timeout, $q
             if (!$container.mixItUp('isLoaded')) {
                 $container.mixItUp({ animation: { enable: enableAnimation } });
             } else {
-                $container.mixItUp('filter', $scope.searchPattern);
+                $container.mixItUp('filter', $scope.searchPattern, filterCallback);
             }
 
             if ($scope.itemsPool.length > 0 && $('#Container')[0].scrollHeight <= $(window).height())
@@ -94,7 +96,7 @@ app.controller("catalogueAdm", function ($scope, $rootScope, $http, $timeout, $q
             if (!$container.mixItUp('isLoaded')) {
                 $container.mixItUp({ animation: { enable: enableAnimation } });
             } else {
-                $container.mixItUp('filter', $scope.searchPattern);
+                $container.mixItUp('filter', $scope.searchPattern, filterCallback);
             }
         })
     }
@@ -166,7 +168,7 @@ app.controller("catalogueAdm", function ($scope, $rootScope, $http, $timeout, $q
                 $timeout(function () {
                     $scope.items.unshift(item);
                     $scope.$apply();
-                    $("#Container").mixItUp('filter', $scope.searchPattern);
+                    $("#Container").mixItUp('filter', $scope.searchPattern, filterCallback);
                 })
 
 
@@ -281,7 +283,7 @@ app.controller("catalogueAdm", function ($scope, $rootScope, $http, $timeout, $q
             $timeout(function () {
                 $scope.items.unshift($scope.selectedItem);
                 $scope.$apply();
-                $("#Container").mixItUp('filter', $scope.searchPattern);
+                $("#Container").mixItUp('filter', $scope.searchPattern, filterCallback);
             })
 
             //$("#Container").mixItUp('append', $('.tile'));
@@ -293,6 +295,16 @@ app.controller("catalogueAdm", function ($scope, $rootScope, $http, $timeout, $q
 
 
 
+    }
+
+    function filterCallback(state) {
+        if ($scope.searchedText.Val) {
+            $scope.shownItems = $.grep($scope.items, function (e) {
+                return e.filter.indexOf("f-" + $scope.searchedText.Val) != -1;
+            });
+        } else {
+            $scope.shownItems = $scope.items;
+        }
     }
 
     $scope.validateSearch = function (keyEvent) {
@@ -351,7 +363,7 @@ app.controller("catalogueAdm", function ($scope, $rootScope, $http, $timeout, $q
         } else {
             var state = $('#Container').mixItUp('getState');
             if (state.activeFilter != $scope.searchPattern) {
-                $('#Container').mixItUp('filter', $scope.searchPattern);
+                $('#Container').mixItUp('filter', $scope.searchPattern, filterCallback);
             } else {
                 // skip filter
             }

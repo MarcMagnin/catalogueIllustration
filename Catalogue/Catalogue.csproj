@@ -716,6 +716,12 @@
     <Content Include="css\search.min.css">
       <DependentUpon>search.css</DependentUpon>
     </Content>
+    <Content Include="css\swiper.css">
+      <DependentUpon>swiper.less</DependentUpon>
+    </Content>
+    <Content Include="css\swiper.min.css">
+      <DependentUpon>swiper.css</DependentUpon>
+    </Content>
     <Content Include="css\tags.css">
       <DependentUpon>tags.less</DependentUpon>
     </Content>
@@ -739,6 +745,7 @@
     <Content Include="ItemModal.tmpl.html" />
     <Content Include="js\app.js" />
     <Content Include="js\controllers\catalogueAdm.js" />
+    <Content Include="js\directives\infinitScroll.js" />
     <Content Include="js\directives\tag.js" />
     <Content Include="js\filters\filters.js" />
     <Content Include="js\hammer.js" />
@@ -2732,6 +2739,10 @@
     <Content Include="threejs\three.js-master\utils\servers\perl_server.sh" />
     <Content Include="threejs\three.js-master\utils\servers\python_server.sh" />
     <Content Include="threejs\three.js-master\utils\servers\ruby_server.sh" />
+    <Content Include="css\swiper.less" />
+    <Content Include="css\swiper.css.map">
+      <DependentUpon>swiper.css</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

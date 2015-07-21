@@ -8,6 +8,30 @@
     // Texture CORS problem : http://stackoverflow.com/questions/30853339/three-js-collada-textures-not-loading
 
     $scope.init = function () {
+     
+        setTimeout(function () {
+            console.log("INDEX " + $scope.parentScope.shownItems);
+            console.log("INDEX " + $scope.selectedItem);
+            console.log("INDEX " + $scope.parentScope.shownItems.indexOf($scope.selectedItem));
+            var galleryTop = new Swiper('.gallery-top', {
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                spaceBetween: 10,
+                initialSlide: $scope.parentScope.shownItems.indexOf($scope.selectedItem)
+            });
+            var galleryThumbs = new Swiper('.gallery-thumbs', {
+                spaceBetween: 10,
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                touchRatio: 0.2,
+                slideToClickedSlide: true,
+                initialSlide: $scope.parentScope.shownItems.indexOf($scope.selectedItem)
+            });
+            galleryTop.params.control = galleryThumbs;
+            galleryThumbs.params.control = galleryTop;
+            console.log(galleryTop);
+        }, 300);
+
         $scope.parentScope.itemModalController = $scope;
         if ($scope.selectedItem.model3D) {
             setTimeout(function () {

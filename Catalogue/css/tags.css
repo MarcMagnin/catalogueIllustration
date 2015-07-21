@@ -1,20 +1,9 @@
-﻿.input {
-  display: block;
-  height: 38px;
-  width: 100%;
-  vertical-align: baseline;
-  background-color: white;
-  color: black;
-  border-radius: 3px;
-  border: none;
-  min-height: 30px;
-  line-height: 19px;
-  padding: 0 8px;
-}
-.input:focus {
-  box-shadow: 0 0 7px #c7b3ff;
+﻿.tags-directive {
+  position: absolute;
 }
 .tags {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
@@ -24,6 +13,23 @@
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+}
+.input {
+  display: block;
+  height: 100%;
+  width: 100%;
+  vertical-align: baseline;
+  background-color: transparent;
+  color: black;
+  border-radius: 3px;
+  border: none;
+  min-height: 30px;
+  line-height: 19px;
+  padding: 0 8px;
+}
+.input:focus {
+  background-color: #ffffff;
+  box-shadow: 0 0 7px #c7b3ff;
 }
 .tag-remove-icon {
   opacity: 0.5;
@@ -44,9 +50,8 @@
   justify-content: center;
   text-align: center;
   margin-right: 3px;
-  margin-bottom: 3px;
-  background-color: rgba(199, 179, 255, 0.1);
-  color: white;
+  background-color: rgba(199, 179, 255, 0.7);
+  color: black;
   border-radius: 3px;
   border: none;
   min-height: 30px;
