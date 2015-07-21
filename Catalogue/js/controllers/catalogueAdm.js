@@ -11,8 +11,8 @@ var Update = function () {
 };
 
 app.controller("catalogueAdm", function ($scope, $rootScope, $http, $timeout, $q, itemService, $filter, $mdDialog, $upload) {
-    //$rootScope.apiRootUrl = "http://62.23.104.30/databases/catalogueIllustration";
-    $rootScope.apiRootUrl = "http://localhost:8088/databases/catalogueIllustration";
+    $rootScope.apiRootUrl = "http://62.23.104.30/databases/catalogueIllustration";
+    //$rootScope.apiRootUrl = "http://localhost:8088/databases/catalogueIllustration";
 
     $scope.entityName = "Item"
     $scope.itemsPool = [];
