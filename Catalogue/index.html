@@ -30,7 +30,7 @@
             <span bind-html-unsafe="match.model.Val | typeaheadHighlight:query"></span>
         </a>
     </script>
-    <div class="toolbar">
+    <!--<div class="toolbar">
         <button class="clear-button add-button" ng-click="add($event)">
             <ng-md-icon icon="add_box" size="48"></ng-md-icon>
         </button>
@@ -44,7 +44,7 @@
                typeahead-wait-ms="300"
                typeahead-on-select="validateSearch($viewValue)"
                class="search" />
-    </div>
+    </div>-->
 
     <div id="Container" when-scrolled="loadMore()" class="tileContainer drop-box u-fancy-scrollbar"
          ng-file-drop ng-model="files"
